@@ -25,10 +25,43 @@ plaintext = "This is a secret message."
 
 # Initialize your ciphertext an empty string
 ciphertext = ""
+
+
+#encryption
 for character in plaintext:
-    # do something to the character to encrypt it
-    # YOUR CODE HERE
-    encrypted_character = "a" # CHANGE THIS!
+    if character in alphabet:
+        index = alphabet.index(character.lower())
+        new_index = (index + 5) % 26
+        encrypted_character = alphabet[new_index]
+        
+        if character.isupper():
+            encrypted_character = encrypted_character.upper()
+
+    else: encrypted_character = character
+
     ciphertext += encrypted_character
 
+#print encryption
 print(f"{ciphertext = }")
+
+
+
+decrypted_plaintext = ""
+
+
+#decryption
+for character in ciphertext:
+    if character in alphabet:
+        index = alphabet.index(character.lower())
+        new_index = (index - 5) % 26
+        decrypted_character = alphabet[new_index]
+        
+        if character.isupper():
+            decrypted_character = decrypted_character.upper()
+
+    else: decrypted_character = character
+
+    decrypted_plaintext += decrypted_character
+
+#print decryption
+print(f"{decrypted_plaintext = }")
